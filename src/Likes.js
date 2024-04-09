@@ -1,11 +1,14 @@
-import {connect} from 'react-redux';//подключает компонент React к хранилищу Redux.
+import {connect} from 'react-redux';
+import {likesReducer} from "./redux/likesReducer";
+
+//подключает компонент React к хранилищу Redux.
 
 function Likes(props) {
     console.log(props);
     return (
         <div className='button-controls'>
             <button onClick={props.onIncrementLikes}>♥ {props.likes}</button>
-            <button>Dislike</button>
+            <button onClick={props.onDecrementLikes}>Dislike</button>
         </div>
     )
 }
@@ -13,8 +16,9 @@ function Likes(props) {
 //чтение данных из store(при из изменении) и передача данных
 function mapStateToProps(state) {
     console.log('mapStateToProps >', state);
+    const {likesReducer} = state;
     return {
-        likes: state.likes
+        likes: likesReducer.likes
     }
 }
 
@@ -24,6 +28,12 @@ function mapDispatchToProps(dispatch) {
         onIncrementLikes: () => {
             console.log('click');
             const action = {type: "INCREMENT"};
+            dispatch(action);
+        },
+
+        onDecrementLikes: () => {
+            console.log('click decrement');
+            const action = {type: "DECREMENT"};
             dispatch(action);
         }
     }
