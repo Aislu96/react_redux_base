@@ -15,7 +15,6 @@ function Likes(props) {
 
 //чтение данных из store(при из изменении) и передача данных
 function mapStateToProps(state) {
-    console.log('mapStateToProps >', state);
     const {likesReducer} = state;
     return {
         likes: likesReducer.likes
