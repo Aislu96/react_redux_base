@@ -1,4 +1,4 @@
-import {INCREMENT, DECREMENT, INPUT_TEXT} from "./types";
+import {INCREMENT, DECREMENT, INPUT_TEXT, COMMENT_CREATE} from "./types";
 
 export function incrementLikes() {
     return {
@@ -21,3 +21,12 @@ export function inputText(text) {
     }
 }
 
+
+export function commentCreate(text, id) {
+    return {
+        type: COMMENT_CREATE,
+        data: {
+            text, id
+        }
+    }
+}
