@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {thunk} from 'redux-thunk';
 import './index.css';
 import App from './App';
 import {Provider} from "react-redux";
-import {createStore} from 'redux';//Создает хранилище Redux , в котором хранится полное дерево состояний вашего приложения.
+import {createStore, compose, applyMiddleware} from 'redux';//Создает хранилище Redux , в котором хранится полное дерево состояний вашего приложения.
 import {rootReducer} from "./redux/rootReducer";
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, compose(
+    applyMiddleware(
+        thunk
+    ),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 
 ReactDOM.render(
     <Provider store={store}>
