@@ -7,6 +7,7 @@ import {appReducer} from "./appReducer";
 export const rootReducer = combineReducers({
     likesReducer,
     inputReducer,
-    commentsReducer, appReducer
+    commentsReducer,
+    appReducer
 });
 
